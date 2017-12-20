@@ -1,59 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:id="@+id/constraint1"
+    android:clickable="false"
+    android:foreground="@drawable/selectable_item_background"
     >
-    
+
     <android.support.constraint.Guideline
         android:id="@+id/guide30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".30" />
+        app:layout_constraintGuide_percent="0.3"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="96dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guide70"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".70"
+        app:layout_constraintGuide_percent="0.7"
         android:orientation="vertical"
-        />
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="224dp" />
     <android.support.constraint.Guideline
         android:id="@+id/guide40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".35"  />
+        app:layout_constraintGuide_percent="0.35"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="112dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guide60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".65"
-        />
+        app:layout_constraintGuide_percent="0.65"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="208dp" />
     <android.support.constraint.Guideline
         android:id="@+id/v_guide70"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".70"
-        />
+        app:layout_constraintGuide_percent="0.7"
+
+        tools:layout_editor_absoluteY="91dp"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
         android:id="@+id/img1"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/v_guide70"
+        app:layout_constraintBottom_toTopOf="@+id/v_guide70"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guide30"
         android:scaleType="centerCrop"
-        />
+        tools:layout_editor_absoluteX="25dp" />
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt1"
         android:layout_width="wrap_content"
@@ -66,7 +77,7 @@
         android:text="Germany"
         android:textColor="@color/matchItemText"
         app:font="@string/aljazeeraFont"
-        />
+        tools:layout_editor_absoluteX="21dp" />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt2"
@@ -82,7 +93,7 @@
         android:text="22"
         android:textColor="@color/matchItemText"
         app:font="@string/dinDisplayBold"
-        />
+        tools:layout_editor_absoluteX="95dp" />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt3"
@@ -99,7 +110,7 @@
         android:padding="7dp"
         android:text="running"
         app:font="@string/dinDisplayNormal"
-        />
+        tools:layout_editor_absoluteX="131dp" />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt4"
@@ -114,7 +125,7 @@
         android:text="StarSports"
         android:textColor="@color/matchItemText"
         app:font="@string/dinDisplayBold"
-        />
+        tools:layout_editor_absoluteX="126dp" />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt5"
@@ -130,7 +141,7 @@
         android:text="33"
         android:textColor="@color/matchItemText"
         app:font="@string/dinDisplayBold"
-        />
+        tools:layout_editor_absoluteX="207dp" />
     <ImageView
         android:id="@+id/img2"
         android:layout_width="45dp"
@@ -141,7 +152,7 @@
         app:layout_constraintStart_toEndOf="@+id/guide70"
         app:layout_constraintEnd_toEndOf="parent"
         android:scaleType="centerCrop"
-        />
+        tools:layout_editor_absoluteX="249dp" />
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
         android:id="@+id/txt6"
         android:layout_width="wrap_content"
@@ -154,6 +165,6 @@
         android:text="Brazil"
         android:textColor="@color/matchItemText"
         app:font="@string/aljazeeraFont"
-        />
+        tools:layout_editor_absoluteX="256dp" />
 
 </android.support.constraint.ConstraintLayout>
