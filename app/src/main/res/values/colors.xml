@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AB9BFF</color>
+    <color name="colorPrimaryDark">#9f91f2</color>
+    <color name="colorAccent">#2ED468</color>
+    <color name="colorPrimaryLight">#CDC0FF</color>
+
+    <color name="listBackground">#F8F8FA</color>
+    <color name="leagueHeader">#579AF1</color>
+    <color name="matchStatus">#FDD835</color>
+
+
+    <color name="matchItemText">#666170</color>
+    <color name="tabIndicator">#9f8ef2</color>
+    <color name="tabUnselected">#d8d1f9</color>
+</resources>

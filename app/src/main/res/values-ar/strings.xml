@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="fontNormal">Aljazeera.ttf</string>
+    <string name="fontbold">Aljazeera.ttf</string>
+    <string name="aljazeeraFont">Aljazeera.ttf</string>
+    <string name="dinDisplayNormal">PFDinDisplayProMed.ttf</string>
+    <string name="dinDisplayBold">PFDinDisplayProBold.ttf</string>
+</resources>
