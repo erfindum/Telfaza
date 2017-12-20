@@ -62,14 +62,16 @@ public class MatchHolder extends RecyclerView.ViewHolder implements MatchHolderC
 
     void setListeners(){
 
-        itemView.setOnTouchListener(new View.OnTouchListener() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                itemView.getBackground().setHotspot(motionEvent.getX(),motionEvent.getY());
-                return false;
-            }
-        });
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    itemView.getBackground().setHotspot(motionEvent.getX(), motionEvent.getY());
+                    return false;
+                }
+            });
+        }
 
         parent.setOnClickListener(new View.OnClickListener() {
             @Override
