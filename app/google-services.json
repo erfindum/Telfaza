@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "304775968717",
+    "firebase_url": "https://telfaza-b6dd9.firebaseio.com",
+    "project_id": "telfaza-b6dd9",
+    "storage_bucket": "telfaza-b6dd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304775968717:android:89b1b92926b41f94",
+        "android_client_info": {
+          "package_name": "com.ahmedelouha.telfaza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304775968717-hjh1jdi2cdkg1mre4ou9l5v1q5rodtgd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedelouha.telfaza",
+            "certificate_hash": "b2bd5396972098af2595e1179426d930a54e5aa9"
+          }
+        },
+        {
+          "client_id": "304775968717-0orjhjrop5ndnurfb5vqkr1t1m9ic4so.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVpyTwHPj_tUeqlBlCaaw37TayEhXU1z4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304775968717-0orjhjrop5ndnurfb5vqkr1t1m9ic4so.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
