@@ -54,8 +54,8 @@ public class MatchDetailPresenter implements MatchDetailPresenterContract.Presen
     }
 
     @Override
-    public void openMatchLink(Match match,int urlType) {
-        int delimiter =0;
+    public void openStreamList(Match match, int urlType) {
+      /*  int delimiter =0;
         if(match.liveurl.equals("")){
             return;
         }
@@ -71,19 +71,27 @@ public class MatchDetailPresenter implements MatchDetailPresenterContract.Presen
                 if(urlOne.equals("") || !urlOne.contains("http")) {
                     return;
                 }
-                view.displayMatchStream(urlOne);
+                view.displayMatchStreamList(urlOne);
                 break;
             case 1:
                 if(urlTwo.equals("") || !urlTwo.contains("http")) {
                     return;
                 }
-                view.displayMatchStream(urlTwo);
+                view.displayMatchStreamList(urlTwo);
                 break;
             case 2:
                 if(match.goalurl.equals("") || !match.goalurl.contains("http")) {
                     return;
                 }
-                view.displayMatchStream(match.goalurl);
+                view.displayMatchStreamList(match.goalurl);
+        } */
+
+        if(urlType==0){
+            view.displayMatchStreamList(match.channelname,match.link);
+            return;
+        }
+        if(urlType == 1){
+            view.displayGoalLink(match.goalurl);
         }
 
     }

@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_exo_play" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
         <activity android:name=".matches.MatchActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -22,6 +30,18 @@
         <activity android:name=".matchdetail.MatchDetailActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".matchstream.StreamPlayerActivity"
+            android:configChanges="orientation|screenSize"
+            />
+        <activity android:name=".channeldetail.ChannelListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".matchdetail.GoalWebActivity"
+            />
+        <service android:name=".matches.services.MatchNotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
     </application>
 

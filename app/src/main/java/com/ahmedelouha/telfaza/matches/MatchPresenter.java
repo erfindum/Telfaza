@@ -25,7 +25,7 @@ public class MatchPresenter implements MatchPresenterContract.Presenter {
         matchHolder.setMatchTime(match.date,match.time);
         matchHolder.setMatchId(match.id);
         matchHolder.setPresenter(this);
-        matchHolder.setChannel(match.chanel);
+        matchHolder.setChannel(match.channelname);
         matchHolder.setScores(match.score1,match.score2);
         matchHolder.setStatus(match.status);
         matchHolder.setTeamNames(match.team1name,match.team2name);

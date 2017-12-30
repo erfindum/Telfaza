@@ -2,6 +2,7 @@
     <string name="app_name">Telfaza</string>
     <string name="currentMatch">Current Matches</string>
     <string name="completedMatch">Old Matches</string>
+    <string name="channels">Channels</string>
     <string name="matchCancelled">Cancelled</string>
     <string name="teamWon">won</string>
     <string name="matchDraw">Match Draw</string>
@@ -9,6 +10,8 @@
 
     <string name="refreshFailed">Failed to refresh matches</string>
     <string name="selectedRefreshFailed">Failed to refresh match</string>
+    <string name="refreshChannelFailed">Failed to refresh channels</string>
+
 
     <string name="fontNormal">PFDinDisplayProMed.ttf</string>
     <string name="fontbold">PFDinDisplayProBold.ttf</string>

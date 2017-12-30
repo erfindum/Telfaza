@@ -3,6 +3,7 @@ package com.ahmedelouha.telfaza.data;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import com.google.gson.internal.LinkedHashTreeMap;
 import com.google.gson.reflect.TypeToken;
 
@@ -33,9 +34,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DataRepositoryModel implements DataRepositoryContract {
 
-    private static final String BASE_URL ="http://yallashootmatch.com/";
-    public static final String TEAM_IMAGE_URL = BASE_URL+"soccer/team/";
-    public static final String LEAGUE_IMAGE_URL = BASE_URL+"soccer/league/";
+    private static final String BASE_URL ="http://soccer.aprolibro.com/";
+    public static final String TEAM_IMAGE_URL = BASE_URL+"team/";
+    public static final String LEAGUE_IMAGE_URL = BASE_URL+"league/";
 
     private static DataRepositoryModel INSTANCE;
 
@@ -79,6 +80,13 @@ public class DataRepositoryModel implements DataRepositoryContract {
                     }catch (IOException e){
                         e.printStackTrace();
                     }
+                    catch (JsonParseException e){
+                        e.printStackTrace();
+                        if (callback==null) {
+                            return;
+                        }
+                        callback.onRefreshFailed();
+                    }
 
                 }else{
                     if(chekCallbackNull(callback)){
@@ -109,13 +117,6 @@ public class DataRepositoryModel implements DataRepositoryContract {
     void sendRefreshedMatches(List<Match> matches,DataRepositoryContract.OnMatchRefreshedCallback callback){
         LinkedHashMap<String ,List<Match>> oldMatchMap = new LinkedHashMap<>();
         LinkedHashMap<String,List<Match>> currentMatchMap = new LinkedHashMap<>();
-        if(matches.get(0).id.equals("empty")){
-            if(chekCallbackNull(callback)){
-                return;
-            }
-            callback.onRefreshFailed();
-            return;
-        }
         for(Match match:matches){
             String leagueId = match.league;
             if(!oldMatchMap.containsKey(leagueId)&& !currentMatchMap.containsKey(leagueId)){
@@ -212,6 +213,9 @@ public class DataRepositoryModel implements DataRepositoryContract {
                             List<Match> selectedMatch = new Gson().fromJson(unformattedResponse, new TypeToken<List<Match>>() {
                             }.getType());
                             validateTime(selectedMatch.get(0));
+                            if (callback==null) {
+                                return;
+                            }
                             callback.onSelectedMatchRefreshed(selectedMatch.get(0));
                             return;
                         }
@@ -221,6 +225,13 @@ public class DataRepositoryModel implements DataRepositoryContract {
                         callback.onRefreshFailed();
                     }catch (IOException e){
                         e.printStackTrace();
+                    }
+                    catch (JsonParseException e){
+                        e.printStackTrace();
+                        if (callback==null) {
+                            return;
+                        }
+                        callback.onRefreshFailed();
                     }
 
                 }else{
@@ -240,6 +251,52 @@ public class DataRepositoryModel implements DataRepositoryContract {
             }
         });
 
+    }
+
+    @Override
+    public void refreshChannels(final onChannelRefreshedCallback callback) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        MatchRefreshInterface service = retrofit.create(MatchRefreshInterface.class);
+        Call<List<Channel>> call = service.refreshChannels(1);
+        call.enqueue(new Callback<List<Channel>>() {
+            @Override
+            public void onResponse(Call<List<Channel>> call, Response<List<Channel>> response) {
+                if(response.isSuccessful()){
+                    try {
+                        List<Channel> channelList = response.body();
+                        if (callback == null) {
+                            return;
+                        }
+                        callback.onChannelRefreshed(channelList);
+                    } catch (JsonParseException e){
+                        e.printStackTrace();
+                        if (callback==null) {
+                            return;
+                        }
+                        callback.onRefreshFailed();
+                    }
+                }
+                else {
+                    if (callback==null) {
+                        return;
+                    }
+                    callback.onRefreshFailed();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Channel>> call, Throwable t) {
+                if (callback==null) {
+                    return;
+                }
+                callback.onRefreshFailed();
+            }
+        });
     }
 
 

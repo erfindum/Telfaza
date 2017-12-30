@@ -159,7 +159,8 @@ public class MatchHolder extends RecyclerView.ViewHolder implements MatchHolderC
     public void showMatchDetail(String matchId) {
         itemView.getContext().startActivity(new Intent(itemView.getContext()
                 , MatchDetailActivity.class)
-                .putExtra(MatchDetailActivity.MATCH_ID,matchId));
+                .putExtra(MatchDetailActivity.MATCH_ID,matchId)
+                .putExtra(MatchDetailActivity.INTENT_TYPE,MatchDetailActivity.INTENT_TYPE_HOME));
     }
 
 }

@@ -30,7 +30,7 @@ public class CustomFontTextView extends AppCompatTextView {
 
     private void applyCustomFont(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomFontTextView);
-        String fontName = typedArray.getString(R.styleable.CustomFontTextView_font);
+        String fontName = typedArray.getString(R.styleable.CustomFontTextView_textFont);
         typedArray.recycle();
         int textStyle = attrs.getAttributeIntValue(ANDROID_SCHEMA, "textStyle", Typeface.NORMAL);
         Typeface typeface = getCustomTypeFace(context,textStyle,fontName);

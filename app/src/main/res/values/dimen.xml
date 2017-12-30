@@ -2,4 +2,7 @@
 <resources>
 
     <dimen name="listDecorator">20dp</dimen>
+
+    <dimen name="exo_media_button_width">45dp</dimen>
+    <dimen name="exo_media_button_height">45dp</dimen>
 </resources>

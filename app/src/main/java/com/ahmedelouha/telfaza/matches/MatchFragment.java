@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.ahmedelouha.telfaza.R;
 import com.ahmedelouha.telfaza.data.Match;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -21,10 +23,11 @@ import java.util.List;
 
 public class MatchFragment extends Fragment {
 
-    RecyclerView mRecycler;
-    LeagueAdapter leagueAdapter;
-    SwipeRefreshLayout swipeRefresh;
-    RecyclerView.RecycledViewPool childViewPool;
+    private RecyclerView mRecycler;
+    private LeagueAdapter leagueAdapter;
+    private SwipeRefreshLayout swipeRefresh;
+    private RecyclerView.RecycledViewPool childViewPool;
+    private AdView adView;
 
     void setChildViewPool(RecyclerView.RecycledViewPool viewPool){
         this.childViewPool = viewPool;
@@ -34,9 +37,10 @@ public class MatchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_home_pager,container,false);
+        View view = inflater.inflate(R.layout.fragment_home_match,container,false);
         mRecycler = view.findViewById(R.id.recycler1);
         swipeRefresh = view.findViewById(R.id.swipeRefresh);
+        adView = view.findViewById(R.id.adView);
         swipeRefresh.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimaryDark);
         leagueAdapter = new LeagueAdapter(inflater,childViewPool);
         mRecycler.setAdapter(leagueAdapter);
@@ -62,6 +66,7 @@ public class MatchFragment extends Fragment {
             }
         });
         refreshMatches();
+        loadAd();
     }
 
     @Override
@@ -78,6 +83,11 @@ public class MatchFragment extends Fragment {
         if(swipeRefresh!=null) {
             swipeRefresh.setRefreshing(state);
         }
+    }
+
+    void loadAd(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 }

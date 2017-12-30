@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/img1"
         android:text="Germany"
         android:textColor="@color/matchItemText"
-        app:font="@string/aljazeeraFont"
+        app:textFont="@string/aljazeeraFont"
         />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
@@ -80,7 +80,7 @@
         android:textSize="17sp"
         android:text="22"
         android:textColor="@color/matchItemText"
-        app:font="@string/dinDisplayBold"
+        app:textFont="@string/dinDisplayBold"
         />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
@@ -97,7 +97,7 @@
         android:background="@drawable/img_status"
         android:padding="7dp"
         android:text="running"
-        app:font="@string/dinDisplayNormal"
+        app:textFont="@string/dinDisplayNormal"
         />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
@@ -112,7 +112,7 @@
         android:layout_margin="5dp"
         android:text="StarSports"
         android:textColor="@color/matchItemText"
-        app:font="@string/dinDisplayBold"
+        app:textFont="@string/dinDisplayBold"
         />
 
     <com.ahmedelouha.telfaza.customviews.CustomFontTextView
@@ -128,7 +128,7 @@
         android:textSize="17sp"
         android:text="33"
         android:textColor="@color/matchItemText"
-        app:font="@string/dinDisplayBold"
+        app:textFont="@string/dinDisplayBold"
         />
     <ImageView
         android:id="@+id/img2"
@@ -152,7 +152,7 @@
         app:layout_constraintTop_toBottomOf="@+id/img2"
         android:text="Brazil"
         android:textColor="@color/matchItemText"
-        app:font="@string/aljazeeraFont"
+        app:textFont="@string/aljazeeraFont"
         />
 
 </android.support.constraint.ConstraintLayout>

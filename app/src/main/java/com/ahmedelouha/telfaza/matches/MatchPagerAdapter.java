@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.RecyclerView;
 
+import com.ahmedelouha.telfaza.data.Channel;
 import com.ahmedelouha.telfaza.data.Match;
 
 import java.util.List;
@@ -15,15 +16,17 @@ import java.util.List;
 
 public class MatchPagerAdapter extends FragmentStatePagerAdapter {
 
-    String currentMatch,oldMatch;
+    String currentMatch,oldMatch,channel;
     MatchFragment currentFragment,oldFragment;
+    ChannelFragment channelFragment;
     RecyclerView.RecycledViewPool viewPool;
 
     public MatchPagerAdapter(FragmentManager fragmentManager,String currentMatch
-            ,String oldMatch){
+            ,String oldMatch,String channel){
         super(fragmentManager);
         this.currentMatch = currentMatch;
         this.oldMatch = oldMatch;
+        this.channel = channel;
         viewPool = new RecyclerView.RecycledViewPool();
     }
 
@@ -33,20 +36,26 @@ public class MatchPagerAdapter extends FragmentStatePagerAdapter {
             oldFragment = MatchFragment.getInstance();
             oldFragment.setChildViewPool(viewPool);
             return oldFragment;
-        }else{
+        }
+        if(position ==1){
             currentFragment = MatchFragment.getInstance();
             currentFragment.setChildViewPool(viewPool);
             return currentFragment;
+        }else{
+            return channelFragment = ChannelFragment.getInstance();
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
+        if(position==2){
+            return channel;
+        }else
         if(position==1){
             return currentMatch;
         }else{
@@ -62,5 +71,13 @@ public class MatchPagerAdapter extends FragmentStatePagerAdapter {
     void updateSwipteState(boolean swipeState){
         oldFragment.updateSwipeRefresh(swipeState);
         currentFragment.updateSwipeRefresh(swipeState);
+    }
+
+    void updateChannels(List<Channel> channelList){
+        channelFragment.updateChannelList(channelList);
+    }
+
+    void updateChannelSwipeState(boolean swipeState){
+        channelFragment.updateChannelSwipeState(swipeState);
     }
 }

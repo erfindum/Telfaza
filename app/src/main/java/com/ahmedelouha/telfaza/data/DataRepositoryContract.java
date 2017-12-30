@@ -14,12 +14,18 @@ public interface DataRepositoryContract {
     }
 
     interface onSelectedMatchRefreshedCallback{
-
         void onSelectedMatchRefreshed(Match match);
+        void onRefreshFailed();
+    }
+
+    interface onChannelRefreshedCallback{
+        void onChannelRefreshed(List<Channel> channelList);
         void onRefreshFailed();
     }
 
     void refreshMatches(OnMatchRefreshedCallback callback);
 
     void refreshSelectedMatch(String matchId, onSelectedMatchRefreshedCallback callback);
+
+    void refreshChannels(onChannelRefreshedCallback callback);
 }
