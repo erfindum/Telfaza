@@ -40,7 +40,9 @@ public class DataRepositoryModel implements DataRepositoryContract {
 
     private static DataRepositoryModel INSTANCE;
 
-    private DataRepositoryModel(){}
+    private DataRepositoryModel(){
+        
+    }
 
     public static DataRepositoryModel getInstance(){
         if(INSTANCE == null){
