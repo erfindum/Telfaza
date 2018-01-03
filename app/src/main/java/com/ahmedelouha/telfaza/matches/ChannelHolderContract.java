@@ -8,5 +8,7 @@ public interface ChannelHolderContract {
 
     void setChannelName(String channelName);
 
-    void changeDropIcon(boolean isEXpanded);
+    void setChannelImage(String channelImage);
+
+    void setStreamCountTxt(int streamCountTxt);
 }

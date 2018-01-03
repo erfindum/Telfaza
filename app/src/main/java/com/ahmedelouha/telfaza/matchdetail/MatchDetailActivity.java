@@ -48,7 +48,7 @@ public class MatchDetailActivity extends AppCompatActivity implements MatchDetai
     private TextView leagueTxt,teamOneTxt,teamTwoTxt,scoreTxt,statusTxt
             ,channelTxt;
     private Button streamBtn, goalBtn;
-    private ImageView leagueImg,team1Img,team2Img;
+    private ImageView leagueImg,team1Img,team2Img, channelImage;
     private Match selectedMatch;
 
     private MatchDetailPresenter presenter;
@@ -75,6 +75,7 @@ public class MatchDetailActivity extends AppCompatActivity implements MatchDetai
         leagueImg = (ImageView) findViewById(R.id.img1);
         team1Img= (ImageView) findViewById(R.id.img2);
         team2Img = (ImageView) findViewById(R.id.img3);
+        channelImage = (ImageView) findViewById(R.id.img4);
 
         matchType = getIntent().getIntExtra(INTENT_TYPE,13);
 
@@ -157,6 +158,8 @@ public class MatchDetailActivity extends AppCompatActivity implements MatchDetai
                 .fit().centerCrop().into(team2Img);
         Picasso.with(this).load(DataRepositoryModel.LEAGUE_IMAGE_URL+match.leagueimage)
                 .fit().centerCrop().into(leagueImg);
+        Picasso.with(this).load(DataRepositoryModel.CHANNEL_IMAGE_URL+match.channelimage)
+                .fit().centerCrop().into(channelImage);
 
         leagueTxt.setText(match.leaguename);
         String score = match.score1+"  -  "+match.score2;
@@ -242,21 +245,6 @@ public class MatchDetailActivity extends AppCompatActivity implements MatchDetai
        startActivity(new Intent(this,GoalWebActivity.class)
             .putExtra(GoalWebActivity.GOAL_WEB_URL,url));
     }
-
-   /* @Override
-    public void displayMatchStreamList(String Url) {
-        try {
-            Uri uri = Uri.parse(URLDecoder.decode(Url, "UTF-8"));
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(browserIntent);
-        }catch (UnsupportedEncodingException e){
-            e.printStackTrace();
-        }
-        catch (ActivityNotFoundException e){
-            e.printStackTrace();
-        }
-
-    } */
 
     @Override
     public void onBackPressed() {

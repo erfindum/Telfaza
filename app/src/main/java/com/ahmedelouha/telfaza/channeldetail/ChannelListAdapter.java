@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.ahmedelouha.telfaza.R;
 import com.ahmedelouha.telfaza.data.StreamingLink;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     LayoutInflater inflater;
 
     ChannelListAdapter( LayoutInflater inflater){
+        streamingLinkList = new ArrayList<>();
         this.presenter = new StreamLinkPresenter();
         this.inflater = inflater;
     }

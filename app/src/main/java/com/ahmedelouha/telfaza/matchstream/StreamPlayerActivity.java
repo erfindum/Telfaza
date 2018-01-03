@@ -42,6 +42,7 @@ import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 /**
  * Created by raaja on 28-12-2017.
@@ -59,6 +60,8 @@ public class StreamPlayerActivity extends AppCompatActivity implements Player.Ev
     private DataSource.Factory mDatasourceDactory;
     private DefaultTrackSelector mTrackSelector;
     private boolean shouldAutoPlay, isPLaying,isAdDisplayed;
+
+    private InterstitialAd mInterstitial;
 
     private ProgressBar mProgress;
     private AdView adView;
@@ -85,6 +88,8 @@ public class StreamPlayerActivity extends AppCompatActivity implements Player.Ev
         titletext = (TextView) findViewById(R.id.txt1);
         adView = (AdView) findViewById(R.id.adView);
         closeAdBtn = (AppCompatImageButton) findViewById(R.id.imgBtn);
+        mInterstitial = new InterstitialAd(this);
+        mInterstitial.setAdUnitId("ca-app-pub-6875249461085305/6266784860");
         presenter = new StreamPlayerPresenter(this);
         streamName = getIntent().getStringExtra(STREAM_NAME);
         streamLink = getIntent().getStringExtra(STREAM_LINK);
@@ -165,7 +170,7 @@ public class StreamPlayerActivity extends AppCompatActivity implements Player.Ev
             @Override
             public void onClick(View view) {
                 presenter.hideAdView(View.INVISIBLE);
-                adRefreshInterval = System.currentTimeMillis()+120000;//9_00_000;
+                adRefreshInterval = System.currentTimeMillis()+9_00_000;
                 isAdDisplayed = false;
                 Log.d(StreamPlayerActivity.class.getName(),"Hiding Ad");
             }
@@ -268,6 +273,12 @@ public class StreamPlayerActivity extends AppCompatActivity implements Player.Ev
     }
 
     @Override
+    public void loadInterstitial() {
+        AdRequest request = new AdRequest.Builder().build();
+        mInterstitial.loadAd(request);
+    }
+
+    @Override
     public void displayOrHideAdView(int type) {
         if(type == View.VISIBLE){
             adView.setVisibility(type);
@@ -288,5 +299,14 @@ public class StreamPlayerActivity extends AppCompatActivity implements Player.Ev
     protected void onDestroy() {
         super.onDestroy();
         closeAdBtn.removeCallbacks(updateAdVisibilityTask);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(mInterstitial.isLoaded()){
+            mInterstitial.show();
+            return;
+        }
     }
 }

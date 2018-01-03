@@ -13,17 +13,16 @@ import java.util.List;
 public class ChannelRepositoryPresenter implements ChannelsRepositoryContract {
 
     List<Channel> channelList;
-    List<Boolean> groupExpandedList;
 
     public ChannelRepositoryPresenter(){
         channelList = new ArrayList<>();
-        groupExpandedList = new ArrayList<>();
     }
 
     @Override
     public void bindChannelHolder(int groupPosition, ChannelHolderContract channelHolder) {
         channelHolder.setChannelName(channelList.get(groupPosition).name);
-        channelHolder.changeDropIcon(groupExpandedList.get(groupPosition));
+        channelHolder.setChannelImage(channelList.get(groupPosition).image);
+        channelHolder.setStreamCountTxt(channelList.get(groupPosition).streamingLinks.size());
     }
 
     @Override
@@ -36,9 +35,7 @@ public class ChannelRepositoryPresenter implements ChannelsRepositoryContract {
     @Override
     public void updateChannelAndStreams(List<Channel> channelList) {
             this.channelList = channelList;
-            for(Channel channel:channelList){
-                groupExpandedList.add(false);
-            }
+
     }
 
     @Override
@@ -49,11 +46,6 @@ public class ChannelRepositoryPresenter implements ChannelsRepositoryContract {
     @Override
     public int getStreamsCount(int groupPosition) {
         return channelList.get(groupPosition).streamingLinks.size();
-    }
-
-    @Override
-    public void setGroupExpanded(boolean isExpanded,int groupPosition) {
-        groupExpandedList.add(groupPosition,isExpanded);
     }
 
 

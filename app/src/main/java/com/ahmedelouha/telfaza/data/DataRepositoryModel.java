@@ -37,6 +37,7 @@ public class DataRepositoryModel implements DataRepositoryContract {
     private static final String BASE_URL ="http://soccer.aprolibro.com/";
     public static final String TEAM_IMAGE_URL = BASE_URL+"team/";
     public static final String LEAGUE_IMAGE_URL = BASE_URL+"league/";
+    public static final String CHANNEL_IMAGE_URL = BASE_URL+"channel/";
 
     private static DataRepositoryModel INSTANCE;
 

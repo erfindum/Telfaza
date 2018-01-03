@@ -1,17 +1,16 @@
 package com.ahmedelouha.telfaza.matches;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ahmedelouha.telfaza.R;
 import com.ahmedelouha.telfaza.data.Channel;
-import com.ahmedelouha.telfaza.matchstream.StreamPlayerActivity;
 
 import java.util.List;
 
@@ -78,7 +77,8 @@ public class ChannelAdapter extends BaseExpandableListAdapter {
             viewHolder = new ChannelHolder();
             view= inflater.inflate(R.layout.item_channel_name,viewGroup,false);
             viewHolder.setChannelTxtView((TextView) view.findViewById(R.id.txt1));
-            viewHolder.setChannelDropImage((AppCompatImageView) view.findViewById(R.id.img1));
+            viewHolder.setStreamTextView((TextView) view.findViewById(R.id.txt2));
+            viewHolder.setChannelImage((ImageView) view.findViewById(R.id.img1));
             view.setTag(viewHolder);
         }
         viewHolder = (ChannelHolder) view.getTag();
@@ -100,18 +100,6 @@ public class ChannelAdapter extends BaseExpandableListAdapter {
         viewHolder = (StreamLinkHolder) view.getTag();
         presenter.bindStreamHolder(i,i1,viewHolder);
         return view;
-    }
-
-    @Override
-    public void onGroupExpanded(int groupPosition) {
-        super.onGroupExpanded(groupPosition);
-        presenter.setGroupExpanded(true,groupPosition);
-    }
-
-    @Override
-    public void onGroupCollapsed(int groupPosition) {
-        super.onGroupCollapsed(groupPosition);
-        presenter.setGroupExpanded(false,groupPosition);
     }
 
     @Override

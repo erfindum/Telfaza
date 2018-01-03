@@ -55,38 +55,11 @@ public class MatchDetailPresenter implements MatchDetailPresenterContract.Presen
 
     @Override
     public void openStreamList(Match match, int urlType) {
-      /*  int delimiter =0;
-        if(match.liveurl.equals("")){
-            return;
-        }
-        delimiter= match.liveurl.lastIndexOf("%24telfaza%24");
-        if(delimiter==-1){
-            return;
-        }
-        String urlOne = match.liveurl.substring(0,delimiter);
-        String urlTwo = match.liveurl.substring(delimiter+13,match.liveurl.length());
-
-        switch (urlType){
-            case 0:
-                if(urlOne.equals("") || !urlOne.contains("http")) {
-                    return;
-                }
-                view.displayMatchStreamList(urlOne);
-                break;
-            case 1:
-                if(urlTwo.equals("") || !urlTwo.contains("http")) {
-                    return;
-                }
-                view.displayMatchStreamList(urlTwo);
-                break;
-            case 2:
-                if(match.goalurl.equals("") || !match.goalurl.contains("http")) {
-                    return;
-                }
-                view.displayMatchStreamList(match.goalurl);
-        } */
 
         if(urlType==0){
+            if(match.link==null){
+                return;
+            }
             view.displayMatchStreamList(match.channelname,match.link);
             return;
         }

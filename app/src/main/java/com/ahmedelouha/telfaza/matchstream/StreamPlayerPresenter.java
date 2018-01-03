@@ -11,6 +11,7 @@ public class StreamPlayerPresenter implements StreamPlayerContract.Presenter {
     StreamPlayerPresenter(StreamPlayerContract.View view){
         this.view = view;
         view.loadAd();
+        view.loadInterstitial();
     }
 
     @Override

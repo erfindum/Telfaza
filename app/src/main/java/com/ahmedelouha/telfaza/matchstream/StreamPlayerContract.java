@@ -11,6 +11,7 @@ public interface StreamPlayerContract {
         void releasePlayer();
         void changeProgressVisibility(int visibility);
         void loadAd();
+        void loadInterstitial();
         void displayOrHideAdView(int type);
     }
 

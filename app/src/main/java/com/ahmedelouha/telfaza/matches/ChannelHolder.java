@@ -1,9 +1,10 @@
 package com.ahmedelouha.telfaza.matches;
 
-import android.support.v7.widget.AppCompatImageView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ahmedelouha.telfaza.R;
+import com.ahmedelouha.telfaza.data.DataRepositoryModel;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by raaja on 28-12-2017.
@@ -12,14 +13,19 @@ import com.ahmedelouha.telfaza.R;
 public class ChannelHolder implements ChannelHolderContract {
 
     TextView channelTxt;
-    AppCompatImageView imageView;
+    ImageView channelImage;
+    TextView streamCountTxt;
 
     void setChannelTxtView(TextView textView){
         this.channelTxt = textView;
     }
 
-    void setChannelDropImage(AppCompatImageView imageView){
-        this.imageView = imageView;
+    void setChannelImage(ImageView imageView){
+        this.channelImage = imageView;
+    }
+
+    void setStreamTextView(TextView streamCount){
+        this.streamCountTxt = streamCount;
     }
 
     @Override
@@ -28,13 +34,13 @@ public class ChannelHolder implements ChannelHolderContract {
     }
 
     @Override
-    public void changeDropIcon(boolean isEXpanded) {
-        if(isEXpanded){
-            imageView.setImageResource(R.drawable.ic_arrow_drop_up_black_24dp);
-        }else{
-            imageView.setImageResource(R.drawable.ic_arrow_drop_down_black_24dp);
+    public void setChannelImage(String channelImage) {
+        Picasso.with(channelTxt.getContext()).load(DataRepositoryModel.CHANNEL_IMAGE_URL+channelImage)
+                .fit().centerCrop().into(this.channelImage);
+    }
 
-        }
+    public void setStreamCountTxt(int streamCountTxt) {
+        this.streamCountTxt.setText(String.valueOf(streamCountTxt));
     }
 
 

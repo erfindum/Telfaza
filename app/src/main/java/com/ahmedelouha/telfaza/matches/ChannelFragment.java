@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class ChannelFragment extends Fragment {
         adView = parent.findViewById(R.id.adView);
         channelAdapter = new ChannelAdapter(getContext());
         mExpandableListView.setAdapter(channelAdapter);
+        mExpandableListView.setIndicatorBoundsRelative((getParentWidth()-(getPixelsFromDp(35)+getPixelsFromDp(10))),
+                                getParentWidth()-getPixelsFromDp(10));
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimaryDark);
         return parent;
     }
@@ -79,5 +82,15 @@ public class ChannelFragment extends Fragment {
     void loadAd(){
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+    }
+
+    int getPixelsFromDp(int dp){
+        DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
+        return Math.round(dp * (metrics.densityDpi/160f));
+    }
+
+    int getParentWidth(){
+        DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
+        return metrics.widthPixels;
     }
 }

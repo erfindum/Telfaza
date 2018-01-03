@@ -79,7 +79,7 @@ public class MatchNotificationService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setColor(ContextCompat.getColor(getBaseContext(),R.color.colorPrimary));
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
-            bldr.setSmallIcon(R.mipmap.ic_launcher_round);
+            bldr.setSmallIcon(R.drawable.ic_notif_small);
         }else{
             bldr.setSmallIcon(R.mipmap.ic_launcher);
         }

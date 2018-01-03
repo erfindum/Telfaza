@@ -20,6 +20,4 @@ public interface ChannelsRepositoryContract {
 
     int getStreamsCount(int groupPosition);
 
-    void setGroupExpanded(boolean isExpanded,int groupPosition);
-
 }

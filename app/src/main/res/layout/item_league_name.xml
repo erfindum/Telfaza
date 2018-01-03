@@ -29,7 +29,7 @@
         android:textSize="17sp"
         android:layout_centerVertical="true"
         android:textAlignment="center"
-        app:textFont="@string/fontbold"
+        app:textFont="@string/aljazeeraFont"
         />
 
 </android.support.constraint.ConstraintLayout>

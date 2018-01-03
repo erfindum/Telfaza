@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 
 public class Channel {
-    public String name;
+    public String name,image;
     @SerializedName("links")
     public ArrayList<StreamingLink> streamingLinks;
 }

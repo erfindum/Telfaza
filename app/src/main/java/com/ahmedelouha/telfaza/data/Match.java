@@ -13,7 +13,7 @@ public class Match {
 
     public String team1name, team2name,team1image,team2image
             ,leagueimage,leaguename,score1,score2,time,channelname
-            ,date,goalurl,status,id,team1,team2,league;
+            ,date,goalurl,status,id,team1,team2,league,channelimage;
     public ArrayList<StreamingLink> link;
     public boolean shouldDisplayTime;
 

@@ -6,6 +6,7 @@
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/adView"
         >
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:adUnitId="ca-app-pub-6875249461085305/4964020480"
         />
 
 </RelativeLayout>
